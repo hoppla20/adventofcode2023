@@ -49,7 +49,16 @@ func find_digit(line string) (int, error) {
 }
 
 func main() {
-	input, err := read_file("inputs.txt")
+	var filePath string
+	if len(os.Args) == 2 {
+		filePath = os.Args[1]
+	} else if len(os.Args) == 1 {
+		filePath = "inputs.txt"
+	} else {
+		panic("Unknown amount of input parameters.")
+	}
+
+	input, err := read_file(filePath)
 	if err != nil {
 		panic(err)
 	}
